@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Row from "./Row";
+import Nav from "./Nav";
+import Banner from "./Banner";
 import './App.css';
 
 function App() {
@@ -17,8 +19,11 @@ function App() {
     setMovies(data.results);
     console.log(data.results);
   };
+  
   return (
     <div className="App">
+      <Nav />
+      <Banner />
       <Row movieList={movies}/>
     </div>
   );

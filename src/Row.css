@@ -1,0 +1,19 @@
+.movie_rows {
+  background-color: #111;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 8px;
+}
+
+.row_posterLarge {
+  /* if size changes it transforms slowly (used by hover effect)*/
+  transition: transform 450ms;
+  max-height: 250px;
+  margin: 8px;
+
+}
+
+.row_posterLarge:hover {
+  transform: scale(1.09);
+}

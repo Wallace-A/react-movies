@@ -8,6 +8,7 @@ function App() {
   const API_KEY = `24450edec1c9dd57fb63c5afeb55d0f3`;
   const SEARCH_URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${"star-wars"}`; 
 
+  const [searchQuery, setSearchQuery] = useState("");
   const [movies, setMovies] = useState([])
   useEffect( () => {
     getMovies();
@@ -22,7 +23,7 @@ function App() {
   
   return (
     <div className="App">
-      <Nav />
+      <Nav searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
       <Banner />
       <Row movieList={movies}/>
     </div>

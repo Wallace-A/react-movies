@@ -21,7 +21,7 @@ function Banner() {
         <header className="banner"
         style={{
             backgroundSize: "cover",
-            backgroundImage: noirflixLogo,
+            backgroundImage: {noirflixLogo},
             backgroundPosition: "center center",
             }}
         >   

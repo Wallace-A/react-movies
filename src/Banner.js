@@ -12,7 +12,7 @@ function Banner() {
         // later this will capture and image. Maybe the last movie you watched or a random one from to watch list.
     }, []);
 
-    console.log(movie);
+    //console.log(movie);
 
     function truncate(str, n) {
         return str?.length > n ? str.substr(0, n - 1) + "..." : str;

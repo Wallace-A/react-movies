@@ -4,10 +4,14 @@ import "./Row.css"
 const base_url = "https://image.tmdb.org/t/p/original/";
 function Row({ movieList }) {
   
+  const movieClicked = (e) => {
+    console.log(e.target.dataset);
+  }
+
   return (
     <div className="movie_rows">
       {movieList.map(movie => (
-        <div className="movie_container">
+        <div className="movie_container" onClick={movieClicked}>
           {/* <h1>{movie.title}</h1>
           <p>{movie.overview}</p> */}
           <img
@@ -15,6 +19,7 @@ function Row({ movieList }) {
             className={"row_posterLarge"}
             src={`${base_url}${movie.poster_path}`} 
             alt={movie.title}
+            data-poster={movie.poster_path}
           />
         </div>
       ))}

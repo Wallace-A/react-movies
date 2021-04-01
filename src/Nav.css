@@ -39,3 +39,6 @@
   width: 30px;
   object-fit: contain;
 }
+.search-container {
+  display: flex;
+}

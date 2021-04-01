@@ -17,20 +17,28 @@ function Nav({searchQuery, updateSearchQuery, getMovies}) {
   }, [])
   return (
     <div className={`nav ${show && "nav_black"}`}>
-      <img
-        className="nav_logo"
-        src= {noirflixLogo}
-        alt="Netflix Logo"
-      />
-      <form onSubmit={getMovies} className="search-form">
-        <input className="search-bar"type="text" value={searchQuery} onChange={updateSearchQuery}/>
-        <button className="search-button" type="submit">Submit</button>
-      </form>
-      <img 
-        className="nav_avatar"
-        src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/366be133850498.56ba69ac36858.png" 
-        alt="Netflix Avatar"
-      />
+      <div>
+        <img
+          className="nav_logo"
+          src= {noirflixLogo}
+          alt="Netflix Logo"
+        />
+      </div>
+      
+      <div className="search-container">
+        <form onSubmit={getMovies} className="search-form">
+          <input className="search-bar"type="text" value={searchQuery} onChange={updateSearchQuery}/>
+          <button className="search-button" type="submit">Submit</button>
+        </form>
+      </div>
+      <div>
+        <img 
+          className="nav_avatar"
+          src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/366be133850498.56ba69ac36858.png" 
+          alt="Netflix Avatar"
+        />
+      </div>
+      
     </div>
   )
 }

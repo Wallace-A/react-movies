@@ -3,14 +3,18 @@ import Row from "./Row";
 import Nav from "./Nav";
 import Banner from "./Banner";
 import './App.css';
-
+import db from "./Firebase";
 function App() {
   const API_KEY = `24450edec1c9dd57fb63c5afeb55d0f3`;
 
   const [searchQuery, setSearchQuery] = useState("");
   const [movies, setMovies] = useState([])
+
+  //when app loads listen to database and fectch new movies
   useEffect( () => {
-   //getMovies();
+   db.collection("watched_movies").onSnapshot(snapshot => {
+    console.log(snapshot.docs.map(doc => doc.data()));
+   });
   },[]);
 
   const getMovies = async (e) => {

@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
-import Row from "./Row";
+// PAGES
+import Home from "./pages/Home";
+import Search from "./pages/Search";
+// OUTER COMPONENTS
 import Nav from "./Nav";
-import Banner from "./Banner";
+
 import './App.css';
 import db from "./Firebase";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 function App() {
   const API_KEY = `24450edec1c9dd57fb63c5afeb55d0f3`;
 
@@ -17,8 +21,8 @@ function App() {
    });
   },[]);
 
-  const getMovies = async (e) => {
-    e.preventDefault();
+  const getMovies = async () => {
+    //get search string from url
     console.log(searchQuery);
     const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${searchQuery}`);
     const data = await response.json();
@@ -29,11 +33,24 @@ function App() {
   const updateSearchQuery = (e) => {
     setSearchQuery(e.target.value);
   }
+
   return (
     <div className="App">
-      <Nav searchQuery={searchQuery} updateSearchQuery={updateSearchQuery} getMovies={getMovies}/>
-      <Banner />
-      <Row movieList={movies}/>
+      <Router>
+        {/* render nav bar */}
+        {/* move all this into the navbar? */}
+        <Nav searchQuery={searchQuery} updateSearchQuery={updateSearchQuery} getMovies={getMovies}/>
+        <Switch>
+         
+          {/* render routes */}
+          <Route path="/" exact component={Home} />
+          <Route path="/search"><Search movies={movies}/></Route> 
+        
+          
+          {/* render footer */}
+        </Switch>
+      </Router>
+      
     </div>
   );
 }

@@ -17,7 +17,7 @@ function Row({ movieList }) {
 
   return (
     <div className="movie_rows">
-      {movieList.map(movie => (
+      {movieList && movieList.map(movie => (
         <div className="movie_container" onClick={movieClicked}>
           {/* <h1>{movie.title}</h1>
           <p>{movie.overview}</p> */}

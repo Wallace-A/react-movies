@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import "./Nav.css"
 import noirflixLogo from "./noirflix.png";
+import { Link, useHistory } from "react-router-dom";
 
 function Nav({searchQuery, updateSearchQuery, getMovies}) {
   const [show, handleShow] = useState(false)
+
+  const history = useHistory();
   // scroll listener
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -15,6 +18,17 @@ function Nav({searchQuery, updateSearchQuery, getMovies}) {
       window.removeEventListener("scroll");
     }
   }, [])
+
+  const handleSubmit = (e) =>
+  {
+    e.preventDefault();
+    
+    getMovies();
+    history.push({
+      pathname: '/search',
+      search: `?${searchQuery}`
+    });
+  };
   return (
     <div className={`nav ${show && "nav_black"}`}>
       <div>
@@ -26,7 +40,7 @@ function Nav({searchQuery, updateSearchQuery, getMovies}) {
       </div>
       
       <div className="search-container">
-        <form onSubmit={getMovies} className="search-form">
+        <form onSubmit={handleSubmit} className="search-form">
           <input className="search-bar"type="text" value={searchQuery} onChange={updateSearchQuery}/>
           <button className="search-button" type="submit">Submit</button>
         </form>

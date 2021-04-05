@@ -19,6 +19,8 @@ function Nav({searchQuery, updateSearchQuery, getMovies}) {
     }
   }, [])
 
+ 
+
   const handleSubmit = (e) =>
   {
     e.preventDefault();
@@ -32,11 +34,12 @@ function Nav({searchQuery, updateSearchQuery, getMovies}) {
   return (
     <div className={`nav ${show && "nav_black"}`}>
       <div>
-        <img
-          className="nav_logo"
-          src= {noirflixLogo}
-          alt="Netflix Logo"
-        />
+      <Link to="/"><img
+        className="nav_logo"
+        src= {noirflixLogo}
+        alt="Netflix Logo"
+      /></Link>
+        
       </div>
       
       <div className="search-container">

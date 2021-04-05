@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import "./Row.css"
 import db from "./Firebase";
 import firebase from "firebase";
@@ -14,7 +14,7 @@ function Row({ movieList }) {
       timestamp: firebase.firestore.FieldValue.serverTimestamp()
     })
   }
-
+  
   return (
     <div className="movie_rows">
       {movieList && movieList.map(movie => (

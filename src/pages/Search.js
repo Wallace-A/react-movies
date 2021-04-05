@@ -5,9 +5,7 @@ import Row from "../Row";
 
 function Search({movies}) {
 
-  useEffect(() => {
-    
-  }, [])
+  
   //load search from query in url
   return ( 
     <div>

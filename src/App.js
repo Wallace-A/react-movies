@@ -6,7 +6,6 @@ import Search from "./pages/Search";
 import Nav from "./Nav";
 
 import './App.css';
-import db from "./Firebase";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 function App() {
   const API_KEY = `24450edec1c9dd57fb63c5afeb55d0f3`;
@@ -16,9 +15,6 @@ function App() {
 
   //when app loads listen to database and fectch new movies
   useEffect( () => {
-   db.collection("watched_movies").onSnapshot(snapshot => {
-    console.log(snapshot.docs.map(doc => doc.data()));
-   });
   },[]);
 
   const getMovies = async () => {
@@ -26,8 +22,11 @@ function App() {
     console.log(searchQuery);
     const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${searchQuery}`);
     const data = await response.json();
-    setMovies(data.results);
-    console.log(data.results);
+    setMovies(data.results.map(movie => (
+      {title: movie.title, poster_path: movie.poster_path}
+    )));
+    console.log("searchedMovies")
+    console.log(movies);
   };
   
   const updateSearchQuery = (e) => {
@@ -43,9 +42,11 @@ function App() {
         <Switch>
          
           {/* render routes */}
-          <Route path="/" exact component={Home} />
+          <>
+          <Route exact path="/" component={Home}/>
+          
           <Route path="/search"><Search movies={movies}/></Route> 
-        
+          </>
           
           {/* render footer */}
         </Switch>
